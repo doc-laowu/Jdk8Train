@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Jdk8Train:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Jdk8Train_jar</output-path>
+    <root id="archive" name="MyJdbcSink.jar">
+      <element id="module-output" name="Jdk8Train" />
+    </root>
+  </artifact>
+</component>
