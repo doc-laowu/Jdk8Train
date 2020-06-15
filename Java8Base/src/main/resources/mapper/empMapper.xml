@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.apache.dubbo.mybatis.empMapper">
+
+    <insert id="inertEmp" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO `yiibaidb`.`emp` (
+        `lastname`,
+        `firstname`,
+        `position`
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+            <if test="emp.lastname != null">
+                #{emp.lastname},
+            </if>
+            <if test="emp.firstname != null">
+                #{emp.firstname},
+            </if>
+            <if test="emp.position != null">
+                #{emp.position},
+            </if>
+        </trim>
+        );
+    </insert>
+
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO `yiibaidb`.`emp` (
+        `lastname`,
+        `firstname`,
+        `position`
+        )
+        VALUES
+        <foreach collection="emps" item="emp" index="index" separator=",">
+            (#{emp.lastname},#{emp.firstname},#{emp.position})
+        </foreach>
+    </insert>
+
+    <update id="updateEmp">
+
+        UPDATE
+          `yiibaidb`.`emp`
+        SET
+        <trim suffixOverrides=",">
+            <if test="lastname != null">
+                `lastname` = #{lastname},
+            </if>
+            <if test="firstname != null">
+                `firstname` = #{firstname},
+            </if>
+            <if test="position != null">
+                `position` = #{position},
+            </if>
+        </trim>
+        WHERE `id` = #{id};
+
+    </update>
+
+    <update id="updateEmpByid">
+        UPDATE
+        `yiibaidb`.`emp`
+        SET
+        updated_at = #{updated_at},
+        <trim suffixOverrides=",">
+            <if test="emp.lastname != null">
+                `lastname` = #{emp.lastname},
+            </if>
+            <if test="emp.firstname != null">
+                `firstname` = #{emp.firstname},
+            </if>
+            <if test="emp.position != null">
+                `position` = #{emp.position},
+            </if>
+        </trim>
+        WHERE `id` = #{empid};
+    </update>
+
+    <select id="getEmpById" resultType="org.apache.dubbo.mybatis.emp">
+      SELECT * FROM emp WHERE id = #{id}
+    </select>
+
+
+</mapper>
