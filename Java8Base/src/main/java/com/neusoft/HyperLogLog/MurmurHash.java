@@ -193,7 +193,6 @@ public class MurmurHash {
                 h ^= (long) (data[length & ~7] & 0xff);
                 h *= m;
         }
-        ;
 
         h ^= h >>> r;
         h *= m;
