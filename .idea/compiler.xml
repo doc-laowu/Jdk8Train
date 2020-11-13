@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Antlr4Demo" />
         <module name="Java8Base" />
+        <module name="yarnclient" />
       </profile>
     </annotationProcessing>
   </component>

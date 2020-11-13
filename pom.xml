@@ -23,6 +23,7 @@
     <modules>
         <module>Java8Base</module>
         <module>Antlr4Demo</module>
+        <module>yarnclient</module>
     </modules>
 
 </project>
